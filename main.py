@@ -2,13 +2,12 @@ import tkinter as tk
 
 
 def cifrar(mensaje, k, alfabeto):
+    if not alfabeto or not all(letra in alfabeto for letra in mensaje):
+        return "Error: el alfabeto está vacío o el mensaje contiene letras no presentes en el alfabeto"
     mensaje_cifrado = ""
     for letra in mensaje:
-        if letra in alfabeto:
-            indice = (alfabeto.index(letra) + k) % len(alfabeto)
-            mensaje_cifrado += alfabeto[indice]
-        else:
-            mensaje_cifrado += letra
+        indice = (alfabeto.index(letra) + k) % len(alfabeto)
+        mensaje_cifrado += alfabeto[indice]
     return mensaje_cifrado
 
 
